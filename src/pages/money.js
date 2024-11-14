@@ -32,12 +32,13 @@ const Money = () => {
         setName(data.name);
         setBudget(data.budget);
     });
+
     return (
         <div>
             <Navbar name={name} />
             <main class="app">
                 <Balance budget={budget} />
-                <MovmentsContainer />
+                <MovmentsContainer id={id} />
 
                 <Transaction
                     type="income"

@@ -1,4 +1,4 @@
-const MovmentsContainer = () => {
+const MovmentsContainer = ({id}) => {
     return (
         <div class="movements">
             <select id="sort-options" onchange="sort()">
@@ -9,7 +9,7 @@ const MovmentsContainer = () => {
                 <option value="by-max">Maximum</option>
                 <option value="by-min">Minimum</option>
             </select>
-            <div id="containerMovements"></div>
+            <div></div>
         </div>
     );
 };
