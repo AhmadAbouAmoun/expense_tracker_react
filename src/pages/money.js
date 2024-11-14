@@ -9,6 +9,7 @@ import Navbar from "../components/Navbar";
 import Balance from "../components/Balance";
 import MovmentsContainer from "../components/MovmentsContainer";
 import Transaction from "../components/Transactions";
+import Reset from "../components/Reset";
 
 const Money = () => {
     const [name, setName] = useState("");
@@ -36,12 +37,7 @@ const Money = () => {
                 <Transaction type="income" />
                 <Transaction type="expenses" />
 
-                <div class="operation operation--close">
-                    <h2>Reset Account</h2>
-                    <button class="close-btn" onclick="clearMovements()">
-                        Reset All actions
-                    </button>
-                </div>
+                <Reset />
             </main>
             <div class="card" id="inputCard">
                 <h2>

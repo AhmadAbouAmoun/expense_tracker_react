@@ -3,7 +3,7 @@ const Nav = ({name}) => {
         <div>
             <nav>
                 <p class="welcome">Welcome,{name}</p>
-                <img src="./assests/logo.png" alt="Logo" class="logo" />
+                <img src="../assests/logo.png" alt="Logo" class="logo" />
             </nav>
         </div>
     );
