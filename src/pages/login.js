@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import "../styles/form.css";
 import "../styles/style.css";
 import Input from "../components/Input";
+import Button from "../components/Button";
 
 const Login = () => {
     const [name, setName] = useState("");
@@ -24,10 +25,7 @@ const Login = () => {
                 <Input value="Name" input={name} setInput={setName} />
                 <Input value="Email" input={email} setInput={setEmail} />
                 <Input value="password" input={password} setInput={setPassword} />
-                <button title="Sign In" type="submit" className="sign-in_btn">
-                    <span>Sign In</span>
-                </button>
-                <p className="note">Terms of use &amp; Conditions</p>
+                <Button />
             </form>
         </div>
     );
