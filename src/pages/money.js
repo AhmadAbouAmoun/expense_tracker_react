@@ -7,6 +7,7 @@ import "../styles/header.css";
 import "../styles/styleResponsivness.css";
 import Navbar from "../components/Navbar";
 import Balance from "../components/Balance";
+import MovmentsContainer from "../components/MovmentsContainer";
 
 const Money = () => {
     const [name, setName] = useState("");
@@ -29,17 +30,7 @@ const Money = () => {
             <Navbar name={name} />
             <main class="app">
                 <Balance budget={budget} />
-                <div class="movements">
-                    <select id="sort-options" onchange="sort()">
-                        <option value="by-date">By date</option>
-                        <option value="by-income">Income</option>
-                        <option value="by-expenses">Expense</option>
-                        <option value="by-notes">Note</option>
-                        <option value="by-max">Maximum</option>
-                        <option value="by-min">Minimum</option>
-                    </select>
-                    <div id="containerMovements"></div>
-                </div>
+                <MovmentsContainer />
                 <div class="operation operation--income">
                     <h2>income</h2>
                     <div class="form form--income">
