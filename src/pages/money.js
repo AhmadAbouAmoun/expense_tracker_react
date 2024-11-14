@@ -6,18 +6,29 @@ import "../styles/card.css";
 import "../styles/header.css";
 import "../styles/styleResponsivness.css";
 import Navbar from "../components/Navbar";
+import Balance from "../components/Balance";
 
 const Money = () => {
+    const [name, setName] = useState("");
+    const [budget, setBudget] = useState("");
+    const id = localStorage.getItem("id");
+    fetch("http://localhost/expense_tracker/server/getUser.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+            id,
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        setName(data.name);
+        setBudget(data.budget);
+    });
     return (
         <div>
-            <Navbar />
+            <Navbar name={name} />
             <main class="app">
-                <div class="balance">
-                    <div>
-                        <p class="balance__label">Main Budget:</p>
-                    </div>
-                    <p class="balance__value" id="balance__value"></p>
-                </div>
+                <Balance budget={budget} />
                 <div class="movements">
                     <select id="sort-options" onchange="sort()">
                         <option value="by-date">By date</option>

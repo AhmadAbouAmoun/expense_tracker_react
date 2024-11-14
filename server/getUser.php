@@ -11,7 +11,7 @@ $id=$_POST["id"];
 
 
 
-$query=$connection->prepare("SELECT * FROM users WHERE user_id=? ");
+$query=$connection->prepare("SELECT * FROM users WHERE user_id =? ");
 if(!$query){
     echo"issue with the query ".$connection->error;
     exit;
@@ -21,10 +21,18 @@ $query->execute();
 if($result=$query->get_result()){
     $user=$result->fetch_assoc();
 
-    $response=["budget"=>$user["budget"],
-    "name"=>$user["name"],
-    "status" => "success",
-];
+    if ($user) {
+        $response = [
+            "budget" => $user["budget"],
+            "name" => $user["name"],
+            "status" => "success",
+        ];
+    } else {
+        $response = [
+            "status" => "failure",
+            "message" => "User not found"
+        ];
+    }
     echo json_encode($response);
 }
 else{
