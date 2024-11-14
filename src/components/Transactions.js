@@ -1,6 +1,4 @@
 const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
-    //i used chatgpt to find out how to formulate the date this way
-
     return (
         <div class={`operation operation--${type}`}>
             <h2>{type}</h2>
@@ -18,7 +16,7 @@ const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
                     className={`form__input form__input--${type}-amount`}
                     required
                     onChange={(e) => {
-                        setAmount((amount = e.target.value));
+                        setAmount(type == "expense" ? (amount = e.target.value * -1) : (amount = e.target.value));
                     }}
                 />
                 <button
@@ -28,7 +26,7 @@ const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
                             method: "POST",
                             headers: {"Content-Type": "application/x-www-form-urlencoded"},
                             body: new URLSearchParams({
-                                user_id: id,
+                                user_id: parseInt(id),
                                 type,
                                 amount,
                                 note,
@@ -37,7 +35,9 @@ const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
                         })
                         .then((response) => response.json())
                         .then((data) => {
-                            console.log(data.message);
+                            if (data.status === "failed") {
+                                alert("enter both note and amount");
+                            }
                         });
                     }}
                 >

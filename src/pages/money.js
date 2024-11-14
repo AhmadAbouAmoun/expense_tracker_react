@@ -15,9 +15,9 @@ const Money = () => {
     const [name, setName] = useState("");
     const [budget, setBudget] = useState("");
     const [income_note, setIncome_Note] = useState("");
-    const [income_amount, setIncome_Amount] = useState("");
+    const [income_amount, setIncome_Amount] = useState();
     const [expense_note, setExpense_Note] = useState("");
-    const [expense_amount, setExpense_Amount] = useState("");
+    const [expense_amount, setExpense_Amount] = useState();
 
     const id = localStorage.getItem("id");
     fetch("http://localhost/expense_tracker/server/getUser.php", {
@@ -45,7 +45,7 @@ const Money = () => {
                     amount={income_amount}
                     setNote={setIncome_Note}
                     setAmount={setIncome_Amount}
-                    id
+                    id={id}
                 />
                 <Transaction
                     type="expenses"
@@ -56,7 +56,7 @@ const Money = () => {
                     id={id}
                 />
 
-                <Reset />
+                <Reset id={id} />
             </main>
             <div class="card" id="inputCard">
                 <h2>

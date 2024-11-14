@@ -3,6 +3,16 @@ include "connection.php";
 header("Access-Control-Allow-Origin: http://localhost:3000");  
 header("Access-Control-Allow-Methods: GET, POST");  
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); 
+header("Content-Type: application/json"); 
+if(!$_POST["note"]||!$_POST["amount"]){
+    $response = [
+        "status" => "failed",
+        "message" => "transaction failed"
+    ];
+    echo json_encode($response);
+
+    exit;
+}
 $type = $_POST["type"];
 $amount = $_POST["amount"];
 $note=$_POST["note"];
