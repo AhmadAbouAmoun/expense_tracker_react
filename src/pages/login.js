@@ -4,13 +4,12 @@ import {useNavigate} from "react-router-dom";
 import "../styles/form.css";
 import "../styles/style.css";
 import Input from "../components/Input";
-import Button from "../components/Button";
+import Login_Button from "../components/Login_Button";
 
 const Login = () => {
-    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [budget, setBudget] = useState("");
+    const navigate = useNavigate();
     return (
         <div>
             <form id="signupForm" class="form_container">
@@ -25,7 +24,17 @@ const Login = () => {
                 </div>
                 <Input value="Email" input={email} setInput={setEmail} />
                 <Input value="Password" input={password} setInput={setPassword} />
-                <Button name={name} email={email} budget={budget} password={password} />
+                <Login_Button email={email} password={password} />
+                <button
+                    title="Sign In"
+                    type="submit"
+                    className="sign-in_btn"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                >
+                    <span>Do not have an account? Sign up</span>
+                </button>
             </form>
         </div>
     );
