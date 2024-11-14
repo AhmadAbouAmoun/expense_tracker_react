@@ -12,8 +12,7 @@ const Input = ({value, input, setInput}) => {
                 className="input_field"
                 required
                 onChange={(e) => {
-                    setInput(e);
-                    console.log(input);
+                    setInput((input = e.target.value));
                 }}
             />
         </div>
