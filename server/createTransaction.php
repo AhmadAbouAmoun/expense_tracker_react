@@ -1,5 +1,8 @@
 <?php
 include "connection.php";
+header("Access-Control-Allow-Origin: http://localhost:3000");  
+header("Access-Control-Allow-Methods: GET, POST");  
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); 
 $type = $_POST["type"];
 $amount = $_POST["amount"];
 $note=$_POST["note"];
@@ -18,9 +21,7 @@ if ($query->execute() === TRUE) {
         "message" => "transaction with ID $transaction_id has been added"
     ];
     echo json_encode($response);
-} else {
-    echo "Failed: " . $query->error; 
-}
+} 
 
 $query->close();
 $connection->close(); 

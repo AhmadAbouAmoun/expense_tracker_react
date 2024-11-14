@@ -43,15 +43,17 @@ const Money = () => {
                     type="income"
                     note={income_note}
                     amount={income_amount}
-                    setNote={setIncome_Amount}
+                    setNote={setIncome_Note}
                     setAmount={setIncome_Amount}
+                    id
                 />
                 <Transaction
                     type="expenses"
                     note={expense_note}
                     amount={expense_amount}
-                    setNote={setExpense_Amount}
+                    setNote={setExpense_Note}
                     setAmount={setExpense_Amount}
+                    id={id}
                 />
 
                 <Reset />
