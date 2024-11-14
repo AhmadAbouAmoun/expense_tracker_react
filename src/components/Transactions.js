@@ -1,4 +1,4 @@
-const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
+const Transaction = ({type, note, amount, setNote, setAmount, id, setFlag, flag}) => {
     return (
         <div class={`operation operation--${type}`}>
             <h2>{type}</h2>
@@ -39,6 +39,8 @@ const Transaction = ({type, note, amount, setNote, setAmount, id}) => {
                                 alert("enter both note and amount");
                             }
                         });
+                        setFlag(!flag);
+                        console.log(flag);
                     }}
                 >
                     &rarr;

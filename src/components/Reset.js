@@ -1,4 +1,4 @@
-const Reset = ({id}) => {
+const Reset = ({id, flag, setFlag}) => {
     return (
         <div class="operation operation--close">
             <h2>Reset Account</h2>
@@ -15,6 +15,8 @@ const Reset = ({id}) => {
                     .then((response) => response.json())
                     .then((data) => console.log(data.status))
                     .catch((e) => console.error(e));
+                    setFlag(!flag);
+                    console.log(flag);
                 }}
             >
                 Reset All actions
