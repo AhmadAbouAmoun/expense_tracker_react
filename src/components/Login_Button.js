@@ -9,7 +9,7 @@ const Login_Button = ({name, password, email, budget}) => {
                 type="button"
                 className="sign-in_btn"
                 onClick={() => {
-                    fetch("http://localhost/expense_tracker/server/CreateUser.php", {
+                    fetch("http://localhost/expense_tracker/server/checkUser.php", {
                         method: "POST",
                         headers: {"Content-Type": "application/x-www-form-urlencoded"},
                         body: new URLSearchParams({
