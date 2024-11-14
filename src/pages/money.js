@@ -14,6 +14,11 @@ import Reset from "../components/Reset";
 const Money = () => {
     const [name, setName] = useState("");
     const [budget, setBudget] = useState("");
+    const [income_note, setIncome_Note] = useState("");
+    const [income_amount, setIncome_Amount] = useState("");
+    const [expense_note, setExpense_Note] = useState("");
+    const [expense_amount, setExpense_Amount] = useState("");
+
     const id = localStorage.getItem("id");
     fetch("http://localhost/expense_tracker/server/getUser.php", {
         method: "POST",
@@ -34,8 +39,20 @@ const Money = () => {
                 <Balance budget={budget} />
                 <MovmentsContainer />
 
-                <Transaction type="income" />
-                <Transaction type="expenses" />
+                <Transaction
+                    type="income"
+                    note={income_note}
+                    amount={income_amount}
+                    setNote={setIncome_Amount}
+                    setAmount={setIncome_Amount}
+                />
+                <Transaction
+                    type="expenses"
+                    note={expense_note}
+                    amount={expense_amount}
+                    setNote={setExpense_Amount}
+                    setAmount={setExpense_Amount}
+                />
 
                 <Reset />
             </main>
