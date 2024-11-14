@@ -1,5 +1,7 @@
 <?php
 include "connection.php";
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if(!$_POST["name"]||!$_POST["email"]||!$_POST["password"]||!$_POST["budget"]){
 echo"something is not right";
@@ -12,13 +14,12 @@ $budget=$_POST["budget"];
 
 $hash_password=password_hash($password,PASSWORD_DEFAULT);
 
-$check=$connection->prepare("SELECT * FROM users WHERE email=?");
-$check->bind_param("s", $email);
-if($check->execute()){
-    echo"email already exists";
+$check=$connection->prepare("SELECT email FROM users WHERE email=$email");
+
+if($check){
+    echo"user already exists ";
     exit;
 }
-
 $query=$connection->prepare("INSERT INTO users(name,budget,email,password) VALUES (?,?,?,?)");
 if(!$query){
     echo"issue with the query ".$connection->error;
