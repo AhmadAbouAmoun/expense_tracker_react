@@ -10,6 +10,7 @@ const Login = () => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [budget, setBudget] = useState("");
     return (
         <div>
             <form id="signupForm" class="form_container">
@@ -23,8 +24,9 @@ const Login = () => {
                     </span>
                 </div>
                 <Input value="Name" input={name} setInput={setName} />
+                <Input value="Budget" input={budget} setInput={setBudget} />
                 <Input value="Email" input={email} setInput={setEmail} />
-                <Input value="password" input={password} setInput={setPassword} />
+                <Input value="Password" input={password} setInput={setPassword} />
                 <Button />
             </form>
         </div>
