@@ -8,6 +8,7 @@ import "../styles/styleResponsivness.css";
 import Navbar from "../components/Navbar";
 import Balance from "../components/Balance";
 import MovmentsContainer from "../components/MovmentsContainer";
+import Transaction from "../components/Transactions";
 
 const Money = () => {
     const [name, setName] = useState("");
@@ -31,40 +32,9 @@ const Money = () => {
             <main class="app">
                 <Balance budget={budget} />
                 <MovmentsContainer />
-                <div class="operation operation--income">
-                    <h2>income</h2>
-                    <div class="form form--income">
-                        <input type="text" id="income-note" class="form__input form__input--income-note" required />
-                        <input
-                            type="number"
-                            id="income-amount"
-                            class="form__input form__input--income-amount"
-                            required
-                        />
-                        <button class="form__btn form__btn--income" onclick="incomeSubmit()">
-                            &rarr;
-                        </button>
-                        <label class="form__label">Note</label>
-                        <label class="form__label">Amount</label>
-                    </div>
-                </div>
-                <div class="operation operation--expenses">
-                    <h2>expenses</h2>
-                    <div class="form form--expenses">
-                        <input type="text" id="expenses-note" class="form__input form__input--expenses-note" required />
-                        <input
-                            type="number"
-                            id="expenses-amount"
-                            class="form__input form__input--expenses-amount"
-                            required
-                        />
-                        <button class="form__btn form__btn--expenses" onclick="expensesSubmit()">
-                            &rarr;
-                        </button>
-                        <label class="form__label">Note</label>
-                        <label class="form__label">Amount</label>
-                    </div>
-                </div>
+
+                <Transaction type="income" />
+                <Transaction type="expenses" />
 
                 <div class="operation operation--close">
                     <h2>Reset Account</h2>
